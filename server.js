@@ -6,17 +6,17 @@ var express= require("express");
 var app= express();
 //******************* our server configuration*********************** */
 // our default port is 8080 , else hosting server will assign port
-var port = process.env.PORT || 8080;
+var PORT = process.env.PORT || 8080;
 
 // Using Express app for data parsing.
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
-
+app.use(express.static(__dirname + '/app/public'));
 //**********************Router Part Below**************************************** */
 
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app);
 
 //****************************************Listener Below******************************** */
 

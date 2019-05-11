@@ -33,21 +33,22 @@ module.exports = function(app) {
   // Then the server saves the data to the tableData array)
   // ---------------------------------------------------------------------------
 
-  app.post("/api/friends", function(req, res) {
+  app.post("/api/survey", function(req, res) {
     var nwfriend =req.body;
     var nwscore = nwfriend.scores;
     var newtot =  nwscore.reduce(function(total,amount){
-        return total +  amount});
-  
+        return (Number (total) + Number(amount))});
+     console.log("inside api survey post");
     var matchindex;
     var compscore;
     var comptot;
+   
     var  diffscore =200; // start at high number, so the first record will be a match as starting point
       for (i = 0; i< friendsData.length;i++){
            
        compscore= friendsData[i].scores
        comptot =  compscore.reduce(function(total,amount){
-        return total +  amount});
+        return (Number(total) + Number( amount))});
           // do comparison with stored diffscore
         if (Math.abs(newtot - comptot) < diffscore){
                 matchindex = i;
@@ -57,8 +58,9 @@ module.exports = function(app) {
        
 
       }
-         friendsData.push(nwfriend);
-         res.json(  friendsData[matchindex]);
+       //  friendsData.push(nwfriend);
+       friendsData.push(nwfriend); 
+       res.json(  friendsData[matchindex]);
            
    
   

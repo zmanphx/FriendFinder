@@ -6,12 +6,11 @@
         <meta charset="UTF-8">
         <title>Survey</title>
       
-        <!-- Latest compiled and minified CSS & JS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://code.jquery.com/jquery.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-                  
-    
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      
     
     </head>
 
@@ -165,7 +164,7 @@
   <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit" >Submit</button>
   <br>
   <br>
-  <h4> <a href="/api/friends"  id ="apiFriends">API Friends List</a></h4>
+  <p> <a href="/api/friends"  id ="apiFriends">API Friends List</a></p>
  
 
 </div>
@@ -197,8 +196,10 @@
     </div>
   </div>
 
-
+  
 </body>
+</body>
+
 
 </html>
 <script type="text/javascript">
@@ -224,10 +225,6 @@ $.ajax({ url: "/api/friends", method: "GET" })
 
 
 
-
-
-
-
   $("#submit").on("click", function(event) {
     event.preventDefault();
     var complete= true;
@@ -235,18 +232,19 @@ $.ajax({ url: "/api/friends", method: "GET" })
     //make sure all questions are answered
 
     $(".chosen-select").each(function(){
-       
-        if(this.val()===""){
+       console.log("complete?")
+        if($(this).val()===""){
          complete = false;
           return complete;
    
         }
     });
    
-    
+    console.log("I am complete?")
     
     if (complete) {
-    var newFriend = {
+    console.log("make friend");
+        var newFriend = {
       name: $("#survName")
         .val()
         .trim(),
@@ -266,15 +264,17 @@ $.ajax({ url: "/api/friends", method: "GET" })
         $("#q10").val()
       ]
     };
+    console.log(newFriend);
   
-    $.post("/api/friends",newFriend, function(data){
+    $.post("/api/survey",newFriend, function(data){
         // get response back of the match
         ///assign data coming back to the modal 
-           $("#matchName").text(data.name);
+        console.log('making post'); 
+        $("#matchName").text(data.name);
            $("#matchphoto").attr("src", data.photo);
            // show the modal.
 
-           $("matchedModal").modal("toggle");
+           $("#matchedModal").modal('show');
 
     });
 

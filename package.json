@@ -1,0 +1,29 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "FriendFinder server app",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "\"echo \\\"Error: no test specificed\\\" && 1\"",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zmanphx/FriendFinder.git"
+  },
+  "keywords": [
+    "express",
+    "path"
+  ],
+  "author": "Mike Hageali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zmanphx/FriendFinder/issues"
+  },
+  "homepage": "https://github.com/zmanphx/FriendFinder#readme"
+}
