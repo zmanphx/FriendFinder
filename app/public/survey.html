@@ -164,7 +164,7 @@
   <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit" >Submit</button>
   <br>
   <br>
-  <p> <a href="/api/friends"  id ="apiFriends">API Friends List</a></p>
+  <p> <a href="/api/friends"  id ="apiFriends">API Friends List</a>  <a href="https://github.com/zmanphx/FriendFinder.git"> | GitHub Repo</a> <a href="/home.html"> |  Home</a></p>
  
 
 </div>
@@ -183,7 +183,7 @@
           <h4 class="modal-title">Closest Match</h4>
         </div>
         <div class="modal-body">
-          <p>Your closest match</p>
+          <p id ="yourmatch">Your closest match</p>
            <h4 id="matchName">   </h4>
            <img id="matchphoto" src="surprise.png" alt="surprise.png" " height="150" width="150">
           
@@ -213,17 +213,12 @@ $.ajax({ url: "/api/friends", method: "GET" })
 
         // Here we then log the waitlistData to console, where it will show up as an object.
         console.log(result);
-        console.log("------------------------------------");
-
-       
+       console.log("------------------------------------");
+      
         
       });
 
-
-
     });
-
-
 
   $("#submit").on("click", function(event) {
     event.preventDefault();
@@ -235,7 +230,15 @@ $.ajax({ url: "/api/friends", method: "GET" })
        console.log("complete?")
         if($(this).val()===""){
          complete = false;
-          return complete;
+          
+         $("#matchName").text("Survey Questions Incomplete!!");
+         $("#yourmatch").text("Not all questions answered.");
+           // show the modal.
+
+           $("#matchedModal").modal('show');
+         
+         
+         return complete;
    
         }
     });
@@ -272,6 +275,7 @@ $.ajax({ url: "/api/friends", method: "GET" })
         console.log('making post'); 
         $("#matchName").text(data.name);
            $("#matchphoto").attr("src", data.photo);
+           $("#yourmatch").text("Your closet match!");
            // show the modal.
 
            $("#matchedModal").modal('show');
