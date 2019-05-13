@@ -1,7 +1,8 @@
 # Friend Finder
 
-**Friend Finder** is a web browser  application demonstrating  **node.js** node **express** to demonstrate back-end server routing.  The server routings are *api routes* and *html routes*.  
+**Friend Finder** is a web browser  application  **node.js** node **express** to demonstrate back-end server routing.  The server routings are *api routes* and *html routes*.  
 
+Friend Finder is hosted  at https://stormy-earth-78062.herokuapp.com/home.html . 
 
 Connecting to the server at the default port of 8080 at the browser address shows the *home* page containing a button to take a survey.
 
